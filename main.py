@@ -1,6 +1,7 @@
 import cv2
 import os
 import subprocess
+import pycolmap
 
 def extract_frames_from_video(video_path, output_dir):
     if not os.path.exists(output_dir):
@@ -18,7 +19,7 @@ def extract_frames_from_video(video_path, output_dir):
 
     cap.release()
 
-def run_colmap(output_dir):
+def run_colmap_subprocessmode(output_dir):
     # Run COLMAP commands
     subprocess.run(["colmap", "feature_extractor", "--database_path", os.path.join(output_dir, "database.db"),
                     "--image_path", output_dir])
@@ -27,6 +28,19 @@ def run_colmap(output_dir):
                     "--image_path", output_dir, "--output_path", os.path.join(output_dir, "sparse")])
     subprocess.run(["colmap", "model_converter", "--input_path", os.path.join(output_dir, "sparse"),
                     "--output_path", os.path.join(output_dir, "dense.ply")])
+    
+def run_colmap_pycolmapmode(output_dir):
+    # Initialize a COLMAP reconstruction object
+    reconstructor = pycolmap.Reconstructor(database_path=os.path.join(output_dir, "database.db"))
+    # Extract features
+    reconstructor.extract_features(image_path=output_dir)
+    # Match features
+    reconstructor.match_features()
+    # Run the mapper
+    reconstructor.mapper(image_path=output_dir, output_path=os.path.join(output_dir, "sparse"))
+    # Convert to dense point cloud
+    reconstructor.model_converter(input_path=os.path.join(output_dir, "sparse"),
+                                  output_path=os.path.join(output_dir, "dense.ply"))    
 
 
 def main():
@@ -34,7 +48,8 @@ def main():
     output_dir = "frames_output"
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
-    run_colmap(output_dir)
+    # run_colmap_subprocessmode(output_dir)
+    run_colmap_pycolmapmode(output_dir)
     print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
 
 if __name__ == "__main__":
