@@ -31,16 +31,8 @@ def run_colmap_subprocessmode(output_dir):
     
 def run_colmap_pycolmapmode(output_dir):
     # Initialize a COLMAP reconstruction object
-    reconstructor = pycolmap.Reconstructor(database_path=os.path.join(output_dir, "database.db"))
-    # Extract features
-    reconstructor.extract_features(image_path=output_dir)
-    # Match features
-    reconstructor.match_features()
-    # Run the mapper
-    reconstructor.mapper(image_path=output_dir, output_path=os.path.join(output_dir, "sparse"))
-    # Convert to dense point cloud
-    reconstructor.model_converter(input_path=os.path.join(output_dir, "sparse"),
-                                  output_path=os.path.join(output_dir, "dense.ply"))    
+    reconstruction = pycolmap.Reconstruction(output_dir)
+    print(reconstruction.summary())
 
 
 def main():
