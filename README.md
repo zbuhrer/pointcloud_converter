@@ -21,25 +21,26 @@ Installation
 
 1.  Install COLMAP:
 
-    -   COLMAP is an open-source Structure-from-Motion (SFM) software. Install it by following the instructions on the COLMAP GitHub repository.
-2.  Create a Python Virtual Environment (optional but recommended):
-
-    ```
-    # Create a virtual environment
-    python -m venv venv
-
-    # Activate the virtual environment
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-
+    -   COLMAP is an open-source Structure-from-Motion (SFM) software. Install it by following the instructions on the COLMAP GitHub repository. https://github.com/colmap/colmap
+  
+2.  Create a Python Virtual Environment:
+    ```shell
+    python3 -m venv venv
     ```
 
-3.  Install Dependencies:
+    Activate the virtual environment
+    ```shell
+    source venv/bin/activate
+    ```
+    (On Windows activate by using `venv\Scripts\activate`)
+
+
+4.  Install Dependencies:
 
     -   Install the required Python packages from the `requirements.txt` file:
 
-    ```
+    ```shell
     pip install -r requirements.txt
-
     ```
 
 Usage
@@ -49,9 +50,8 @@ Usage
 
 2.  Run the script to extract frames and create the point cloud:
 
-    ```
+    ```shell
     python video_to_pointcloud.py
-
     ```
 
 3.  The extracted frames will be saved in the `frames_output` directory, and the resulting point cloud will be saved as `dense.ply`.
