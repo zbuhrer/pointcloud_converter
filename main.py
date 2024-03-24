@@ -14,13 +14,13 @@ def extract_frames_from_video(video_path, output_dir):
         ret, frame = cap.read()
         if not ret:
             break
-        frame_filename = os.path.join(output_dir, f"frame_{i:04d}.jpg")
-        cv2.imwrite(frame_filename, frame)
+        if i % 2 == 0: # Capture every other frame
+            frame_filename = os.path.join(output_dir, f"frame_{i:04d}.jpg")
+            cv2.imwrite(frame_filename, frame)
 
     cap.release()
 
 def run_colmap_subprocessmode(output_dir):
-    # Run COLMAP commands
     subprocess.run(["colmap", "feature_extractor", "--database_path", os.path.join(output_dir, "database.db"),
                     "--image_path", output_dir])
     subprocess.run(["colmap", "exhaustive_matcher", "--database_path", os.path.join(output_dir, "database.db")])
@@ -40,9 +40,9 @@ def main():
     output_dir = "frames_output"
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
-    run_colmap_subprocessmode(output_dir)
+    # run_colmap_subprocessmode(output_dir)
     # run_colmap_pycolmapmode(output_dir)
-    print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
+    # print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
 
 if __name__ == "__main__":
     main()
