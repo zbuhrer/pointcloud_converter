@@ -28,20 +28,14 @@ def run_colmap_subprocessmode(output_dir):
                     "--image_path", output_dir, "--output_path", os.path.join(output_dir, "sparse")])
     subprocess.run(["colmap", "model_converter", "--input_path", os.path.join(output_dir, "sparse"),
                     "--output_path", os.path.join(output_dir, "dense.ply")])
-    
-def run_colmap_pycolmapmode(output_dir):
-    # Initialize a COLMAP reconstruction object
-    reconstruction = pycolmap.Reconstruction(output_dir)
-    print(reconstruction.summary())
 
 
 def main():
-    video_path = "video_input.mp4"
-    output_dir = "frames_output"
+    video_path = "data/video_input.mp4"
+    output_dir = "data/frames_output"
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
     # run_colmap_subprocessmode(output_dir)
-    # run_colmap_pycolmapmode(output_dir)
     # print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
 
 if __name__ == "__main__":
