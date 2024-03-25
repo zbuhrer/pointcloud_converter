@@ -161,3 +161,4 @@ cython_debug/
 
 # Personal additions 
 data/
+.DS_Store
