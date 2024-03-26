@@ -35,7 +35,7 @@ def main():
     output_dir = "data/frames_output"
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
-    # run_colmap_subprocessmode(output_dir)
+    run_colmap_subprocessmode(output_dir)
     # print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
 
 if __name__ == "__main__":
