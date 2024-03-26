@@ -6,7 +6,7 @@ Convert videos into 3D point clouds using COLMAP and visualize them in Blender.
 Description
 -----------
 
-This project provides a Python script that extracts frames from a video, runs COLMAP to create a point cloud, and saves it in PLY format. The resulting point cloud can be imported into Blender for visualization and further manipulation.
+This project extracts frames from a video, runs COLMAP to create a point cloud, and saves it in PLY format. The resulting point cloud can be imported into Blender for visualization and further manipulation.
 
 ![bus!](docs/bus.gif)
 
