@@ -31,7 +31,7 @@ def run_colmap_subprocessmode(output_dir):
 
 
 def main():
-    video_path = "data/video_input.mp4"
+    video_path = "video_input.mp4"
     output_dir = "data/frames_output"
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
