@@ -8,6 +8,10 @@ Description
 
 This project provides a Python script that extracts frames from a video, runs COLMAP to create a point cloud, and saves it in PLY format. The resulting point cloud can be imported into Blender for visualization and further manipulation.
 
+![bus!](docs/bus.gif)
+
+> *"This isn't the best example of what this can do, but the bus scan is the best I've come up with so far. Check the [examples](docs/README.md#examples) for more context."* - zbuhrer
+
 Features
 --------
 

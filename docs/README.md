@@ -1,8 +1,6 @@
 ## **From The Author**
 
-> I'll have to put on my personal roadmap to turn this into a formal document someday, but for now I'll leave this personal note here for usage instructions. Feel free to fork and extend, I'd be happy to collaborate. This is a fun personal project.
->
-> @zbuhrer
+> *I'll have to put on my personal roadmap to turn this into a formal document someday, but for now I'll leave this personal note here for usage instructions. Feel free to fork and extend, I'd be happy to collaborate. This is a fun personal project.* - zbuhrer
 
 ## How To Use 
 # Scanning/Recording 
@@ -31,7 +29,30 @@ pip3 install -r requirements
 
 You will also need to install **COLMAP** per your operating system requirements. Refer to their documentation.
 
-If everything has installed properly and your system can technically handle the resources required to do it, then you can save your `mp4` video file as "`video_input.mp4`"
+If everything has installed properly and your system can technically handle the resources required to do it, then save your `mp4` video file as "`video_input.mp4`" in the root of the app directory. 
 
- you can simply execute the `main.py` script from the root of the project with your `Python`  environment of choice 
+# BUT DON'T MASH GO ON THE JAMBOX JUST YET
 
+> *"You should really know your own hardware and have an understanding of how much this will tax your system. I have an M2 Macbook and it took about 7 hours to process 1200 frames extracted from a 1:20@30fps video. This extracts every other frame by design for optimization; this might change.*
+> 
+> *"What I'm trying to say here is that when you run this, it might take a long time. If your video is huge, if your volume of frames are huge, this could take hours to __days__.*
+> 
+> *"If you're reading this in the future from when I wrote this you're probably laughing because you can do all of this on your cellphone. Good for you."* - zbuhrer
+
+Now:
+
+```sh
+python3 main.py
+```
+
+And sit and wait. 
+
+# Examples 
+
+> *"I extracted 566k points from a 1:20 (30fps). There were a bunch of extra points in the background from details it grabbed from nearby trees and the edge of the house. You can see from the gif that only really the back of the bus came out well; the front was distorted by a bad path I took around this."* - zbuhrer
+
+![gif](bus.gif)
+
+> *"In retrospect, the size of this object and scan was ambitious. I would not recommend trying to scan something that requires you move more than 10-20 linear feet in any direction. It may also not be a good idea to scan something so physically massive that the camera's perspective can't see "through" or "around" it in any meaningful way, which I think is why the highest concentrations of points are on the ground under the RV.* 
+>
+> *"I can make this PLY downloadable if anyone really wants it."* - zbuhrer
