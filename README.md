@@ -1,7 +1,7 @@
 Video to Point Cloud Converter
 ==============================
 
-Convert videos into 3D point clouds using COLMAP and visualize them in Blender.
+Convert videos into 3D point clouds using COLMAP.
 
 Description
 -----------
