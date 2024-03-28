@@ -21,13 +21,10 @@ def extract_frames_from_video(video_path, output_dir):
     cap.release()
 
 def run_colmap_subprocessmode(output_dir):
-    subprocess.run(["colmap", "feature_extractor", "--database_path", os.path.join(output_dir, "database.db"),
-                    "--image_path", output_dir])
+    subprocess.run(["colmap", "feature_extractor", "--database_path", os.path.join(output_dir, "database.db"), "--image_path", output_dir])
     subprocess.run(["colmap", "exhaustive_matcher", "--database_path", os.path.join(output_dir, "database.db")])
-    subprocess.run(["colmap", "mapper", "--database_path", os.path.join(output_dir, "database.db"),
-                    "--image_path", output_dir, "--output_path", os.path.join(output_dir, "sparse")])
-    subprocess.run(["colmap", "model_converter", "--input_path", os.path.join(output_dir, "sparse"),
-                    "--output_path", os.path.join(output_dir, "dense.ply")])
+    subprocess.run(["colmap", "mapper", "--database_path", os.path.join(output_dir, "database.db"), "--image_path", output_dir, "--output_path", os.path.join(output_dir, "sparse")])
+    subprocess.run(["colmap", "model_converter", "--input_path", os.path.join(output_dir, "sparse"), "--output_path", os.path.join(output_dir, "dense.ply")])
 
 
 def main():
@@ -36,7 +33,7 @@ def main():
     extract_frames_from_video(video_path, output_dir)
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
     run_colmap_subprocessmode(output_dir)
-    # print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
+    print(f"Point cloud generated and saved as {os.path.join(output_dir, 'dense.ply')}")
 
 if __name__ == "__main__":
     main()

@@ -46,13 +46,3 @@ python3 main.py
 ```
 
 And sit and wait. 
-
-# Examples 
-
-> *"I extracted 566k points from a 1:20 (30fps). There were a bunch of extra points in the background from details it grabbed from nearby trees and the edge of the house. You can see from the gif that only really the back of the bus came out well; the front was distorted by a bad path I took around this."* - zbuhrer
-
-![gif](bus.gif)
-
-> *"In retrospect, the size of this object and scan was ambitious. I would not recommend trying to scan something that requires you move more than 10-20 linear feet in any direction. It may also not be a good idea to scan something so physically massive that the camera's perspective can't see "through" or "around" it in any meaningful way, which I think is why the highest concentrations of points are on the ground under the RV.* 
->
-> *"I can make this PLY downloadable if anyone really wants it."* - zbuhrer
