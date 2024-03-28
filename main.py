@@ -61,8 +61,8 @@ def main():
     video_path = "video_input.mp4"
     output_dir = "data/frames_output"
     extract_frames_from_video(video_path, output_dir)
-    # run_colmap_feature_extractor(output_dir)
-    # run_colmap_sequential_matcher(output_dir)
+    run_colmap_feature_extractor(output_dir)
+    run_colmap_sequential_matcher(output_dir)
     run_colmap_mapper(output_dir)
     run_colmap_model_converter(output_dir)
 
