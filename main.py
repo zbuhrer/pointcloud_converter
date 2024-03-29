@@ -1,4 +1,5 @@
 import plyextract
+from build import gui
 
 def main():
     video_path = "video_input.mp4"
@@ -11,3 +12,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    # gui()
