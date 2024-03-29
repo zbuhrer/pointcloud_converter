@@ -13,20 +13,6 @@ If your subject might move or twitch, or if your environment is not ideally stat
 
 Move to the next section when you have a video file that you think you can use.
 
-# Using This App
-
-First create a virtual environment.
-
-```sh
-python3 -m venv venv
-```
-
-Then install requirements. 
-
-```sh
-pip3 install -r requirements
-```
-
 You will also need to install **COLMAP** per your operating system requirements. Refer to their documentation.
 
 If everything has installed properly and your system can technically handle the resources required to do it, then save your `mp4` video file as "`video_input.mp4`" in the root of the app directory. 
