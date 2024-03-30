@@ -1,7 +1,7 @@
 import plyextract
 from ui import gui
 
-def main():
+def __main__():
     video_path = "video_input.mp4"
     output_dir = "data/frames_output"
     plyextract.extract_frames_from_video(video_path, output_dir)
@@ -11,5 +11,5 @@ def main():
     plyextract.run_colmap_model_converter(output_dir)
 
 if __name__ == "__main__":
-    main()
-    # gui()
+    # __main__()
+    gui.ui()

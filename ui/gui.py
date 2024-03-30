@@ -11,7 +11,7 @@ from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
 
 
 OUTPUT_PATH = Path(__file__).parent
-ASSETS_PATH = OUTPUT_PATH / Path(r"/Users/zachb/Documents/GitHub/pointcloud_converter/build/assets/frame0")
+ASSETS_PATH = OUTPUT_PATH / Path(r"../ui/assets/frame0")
 
 
 def relative_to_assets(path: str) -> Path:
@@ -71,4 +71,9 @@ button_1.place(
     height=153.0
 )
 window.resizable(False, False)
-window.mainloop()
+
+def ui():
+    window.mainloop()
+
+def __main__():
+    ui()
