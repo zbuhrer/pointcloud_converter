@@ -11,5 +11,5 @@ def __main__():
     plyextract.run_colmap_model_converter(output_dir)
 
 if __name__ == "__main__":
-    # __main__()
-    gui.ui()
+    __main__()
+    # gui.ui()
