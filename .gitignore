@@ -162,3 +162,5 @@ cython_debug/
 # Personal additions 
 data/
 .DS_Store
+video_input.mp4
+old_*
