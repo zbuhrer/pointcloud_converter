@@ -1,7 +1,36 @@
 import cv2
+from tqdm import tqdm
 import os, time, subprocess
 
 def extract_frames_from_video(video_path, output_dir):
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    cap = cv2.VideoCapture(video_path)
+    
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    pbar = tqdm(total=total_frames, desc="Extracting frames")
+
+    # Extract every fourth frame in normal order
+    for i in range(0, total_frames, 4):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+        ret, frame = cap.read()
+        if ret:
+            cv2.imwrite(os.path.join(output_dir, f'frame_{i}.jpg'), frame)
+        pbar.update(4)
+
+    # Extract every third frame in reverse order
+    for i in range(total_frames - 1, 0, -3):
+        cap.set(cv2.CAP_PROP_POS_FRAMES, i)
+        ret, frame = cap.read()
+        if ret:
+            cv2.imwrite(os.path.join(output_dir, f'frame_{i}_rev.jpg'), frame)
+        pbar.update(3)
+    pbar.close()
+    print(f"Frames extracted from {video_path} and saved in {output_dir}")
+    cap.release()
+
+
+def extract_frames_from_video_old(video_path, output_dir):
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -14,9 +43,8 @@ def extract_frames_from_video(video_path, output_dir):
             break
         if i % 2 == 0: 
             frame_filename = os.path.join(output_dir, f"frame_{i:04d}.jpg")
-            cv2.imwrite(frame_filename, frame)
-    print(f"Frames extracted from {video_path} and saved in {output_dir}")
-    cap.release()
+            cv2.imwrite(frame_filename, frame)    
+            cap.release()
 
 def run_colmap_feature_extractor(output_dir):
     try:
