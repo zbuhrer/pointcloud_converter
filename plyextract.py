@@ -29,23 +29,6 @@ def extract_frames_from_video(video_path, output_dir):
     print(f"Frames extracted from {video_path} and saved in {output_dir}")
     cap.release()
 
-
-def extract_frames_from_video_old(video_path, output_dir):
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    cap = cv2.VideoCapture(video_path)
-    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
-
-    for i in range(frame_count):
-        ret, frame = cap.read()
-        if not ret:
-            break
-        if i % 2 == 0: 
-            frame_filename = os.path.join(output_dir, f"frame_{i:04d}.jpg")
-            cv2.imwrite(frame_filename, frame)    
-            cap.release()
-
 def run_colmap_feature_extractor(output_dir):
     try:
         start_time = time.time()  
